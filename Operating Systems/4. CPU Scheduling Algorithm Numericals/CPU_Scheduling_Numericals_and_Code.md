@@ -29,7 +29,39 @@ WT  = TAT - BT  →  WT = CT - AT - BT
 - **Tie-breaking** (same priority): earlier arrival time first
 - **Tie-breaking** (same priority + same arrival): smaller PID first
 - **FCFS** is **non-preemptive**
+- **SJF (non-preemptive)**: assumes all processes are already present at time 0; picks the one with the smallest BT first
 - **Round Robin**: time quantum = 2 (typical, but check the question)
+- **Round Robin** uses a **queue (FIFO)** data structure to manage the ready processes
+
+---
+
+### Gantt Chart
+
+A visual representation of process scheduling that shows the **execution order** and **timeline** of each process on the CPU. It helps track which process runs at what time and is used to compute CT, TAT, and WT.
+
+**Example:**
+```
+|  P1  |   P2   |   P3   |
+0------4-------7-------9
+```
+
+---
+
+## 2.5 Process Creation
+
+A process is represented by a **class/struct** that holds all attributes needed for scheduling calculations:
+
+| Attribute | Description |
+|-----------|-------------|
+| PID | Process ID (identifier) |
+| AT | Arrival Time — when the process enters the ready queue |
+| BT | Burst Time — total CPU time required |
+| CT | Completion Time — when the process finishes |
+| TAT | Turnaround Time — CT - AT |
+| WT | Waiting Time — TAT - BT |
+
+- A **constructor** instantiates and initializes these attributes for each process.
+- All scheduling algorithms build on this same process structure (some add extra fields like `Priority` or `remainingBT`).
 
 ---
 
